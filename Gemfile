@@ -1,5 +1,21 @@
 source 'https://rubygems.org'
 
+gem 'bcrypt', platforms: :ruby
+
+group :development do
+		  gem "annotate"
+		  gem "awesome_print"
+		  gem "better_errors"
+		  gem "binding_of_caller"
+		  gem "dotenv-rails"
+		  gem "letter_opener"
+		  gem "pry-rails"
+		  gem "starter_generators", :git => 'git://github.com/raghubetina/starter_generators.git'
+		end
+
+gem "devise"
+
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"

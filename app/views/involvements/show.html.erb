@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h3>Involvement #<%= @involvement.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Industry</dt>
+      <dd><%= @involvement.industry_id %></dd>
+
+      <dt>User</dt>
+      <dd><%= @involvement.user_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/involvements" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/involvements/<%= @involvement.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_involvement/<%= @involvement.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="page-header">
+  <h3>Update Profile</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_user/<%= @user.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for full name -->
+      <div class="form-group">
+        <label for="full_name" class="control-label">
+          Full Name
+        </label>
+
+        <input type="text" id="full_name" name="full_name" placeholder="First and Last Name" class="form-control" value="<%= @user.full_name %>">
+      </div>
+
+      <!-- Label and input for image -->
+      <div class="form-group">
+        <label for="profile_photo" class="control-label">
+          Profile Picture
+        </label>
+
+        <input type="text" id="profile_photo" name="profile_photo" placeholder="Photo URL" class="form-control" value="<%= @user.profile_photo %>">
+      </div>
+
+      <!-- Hidden input for user_id -->
+      <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+
+
+      <button class="btn btn-success">
+        Update Profile
+      </button>
+      or
+      <a href="/users">Cancel</a>
+
+    </form>
+  </div>
+</div>
