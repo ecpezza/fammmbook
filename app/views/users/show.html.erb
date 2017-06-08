@@ -1,9 +1,52 @@
 <div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <h3><%=@user.preferred_name%></h3>
-    </div>
+<br>
+<br>
+  <div class="panel panel-default">
+       <div class="panel-heading">
+         <h3 class="panel-title">
+           <%=@user.preferred_name %>
+           <small>
+             <%=@user.full_name %>
+           </small>
+         </h3>
+       </div>
 
-  </div>
+       <div class="panel-body">
+           <ul>
+             <img src="<%=@user.profile_photo%>" class="img-responsive" width = "300">
+           </ul>
+
+           <ul>
+             <b>Class of <%=@user.grad_year.year%></b>
+           </ul>
+
+           <ul>
+             <b>Hometown:</b> <%=@user.hometown%>
+           </ul>
+
+           <% if @user.summer_internship.present?%>
+           <ul>
+             <b>Summer Internship:</b> <%=@user.summer_internship%>
+           </ul>
+           <% end %>
+
+           <ul>
+             <b>Favorite Kellogg memory:</b> <%=@user.kellogg_memory%>
+           </ul>
+
+           <ul>
+             <b>When I was little, what I wanted to be when I grew up:</b> <%=@user.grow_up%>
+           </ul>
+
+           <ul>
+             <b>In ten years I'd like to be:</b> <%=@user.ten_year_goals%>
+           </ul>
+
+           <% if @user.anything_else.present? %>
+           <ul>
+             <b>I also want the coMMMMunity to know:</b>
+           </ul>
+           <% end %>
+
 
 </div>

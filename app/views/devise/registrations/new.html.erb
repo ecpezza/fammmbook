@@ -22,75 +22,53 @@
   </div>
 
   <div class="form-group">
-    <label for="full_name" class="control-label">
-      Full Name
-    </label>
-    <input type="text" id="full_name" name="full_name" placeholder="Your first and last name" class="form-control">
+    <%= f.label :full_name %>
+    <%= f.text_field :full_name, autofocus: true, class: "form-control", placeholder: "First and last name" %>
   </div>
 
   <div class="form-group">
-    <label for="preferred_name" class="control-label">
-      Preferred Name
-    </label>
-    <input type="text" id="preferred_name" name="preferred_name" placeholder="What you want people to call you" class="form-control">
+    <%= f.label :preferred_name %>
+    <%= f.text_field :preferred_name, autofocus: true, class: "form-control", placeholder: "What do you want people to call you?"  %>
   </div>
 
   <div class="form-group">
-    <label for="grad_year" class="control-label">
-      Graduation Date
-    </label>
-    <input type="date" id="grad_year" name="grad_year" placeholder="YYYY" class="form-control">
+    <%= f.label :grad_year %>
+    <%= f.date_field :grad_year, autofocus: true, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <label for="hometown" class="control-label">
-      Hometown
-    </label>
-    <input type="text" id="hometown" name="hometown" placeholder="Where do you consider home?" class="form-control">
+    <%= f.label :hometown %>
+    <%= f.text_field :hometown, autofocus: true, class: "form-control", placeholder: "Where do you call home?"  %>
   </div>
 
   <div class="form-group">
-    <label for="profile_photo" class="control-label">
-      Profile Picture
-    </label>
-    <input type="text" id="profile_photo" name="profile_photo" placeholder="Photo URL" class="form-control">
+    <%= f.label :profile_photo %>
+    <%= f.text_field :profile_photo, autofocus: true, class: "form-control", placeholder: "Image URL" %>
   </div>
 
   <div class="form-group">
-    <label for="summer_internship" class="control-label">
-      2nd years, where are you interning this summer?
-    </label>
-    <input type="text" id="summer_internship" name="summer_internship" placeholder="What you'll be doing, in a sentence" class="form-control">
+    <%= f.label :summer_internship, "2nd years, what is your summer internship?" %>
+    <%= f.text_field :summer_internship, autofocus: true, class: "form-control", placeholder: "In a sentence, what are you doing this summer?"  %>
+  </div>
 
-    <div class="form-group">
-      <label for="kellogg_memory" class="control-label">
-        What has been your favorite memory so far at Kellogg?
-      </label>
-      <input type="text" id="kellogg_memory" name="kellogg_memory" placeholder="Describe in a few sentences" class="form-control">
-    </div>
+  <div class="form-group">
+    <%= f.label :kellogg_memory, "What has been your favorite memory so far at Kellogg?" %>
+    <%= f.text_field :kellogg_memory, autofocus: true, class: "form-control", placeholder: "Let us know about it in a few sentences." %>
+  </div>
 
-    <div class="form-group">
-      <label for="grow_up" class="control-label">
-        When you were little, what did you want to be when you grew up?
-      </label>
-      <input type="text" id="grow_up" name="grow_up" placeholder="Describe in a few sentences" class="form-control">
-    </div>
+  <div class="form-group">
+    <%= f.label :grow_up, "When you were little, what did you want to be when you grew up?" %>
+    <%= f.text_field :grow_up, autofocus: true, class: "form-control"%>
+  </div>
 
-    <div class="form-group">
-      <label for="ten_year_goals" class="control-label">
-        Where do you see yourself in 10 years?
-      </label>
-      <input type="text" id="ten_year_goals" name="ten_year_goals" placeholder="Describe in a few sentences" class="form-control">
-    </div>
+  <div class="form-group">
+    <%= f.label :ten_year_goals, "Where do see yourself in ten years, where and who do you want to be?" %>
+    <%= f.text_field :ten_year_goals, autofocus: true, class: "form-control" %>
+  </div>
 
-    <div class="form-group">
-      <label for="anything_else" class="control-label">
-        Anything else you want the faMMM to know about you?
-      </label>
-      <input type="text" id="anything_else" name="anything_else" placeholder="Describe in a few sentences" class="form-control">
-    </div>
-
-
+  <div class="form-group">
+    <%= f.label :anything_else, "Anything else you want the coMMMunity to know about you?" %>
+    <%= f.text_field :anything_else, autofocus: true, class: "form-control" %>
   </div>
 
   <div class="actions">

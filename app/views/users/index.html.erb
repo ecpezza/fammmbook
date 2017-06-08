@@ -1,21 +1,26 @@
+<div class="page-header">
+  <h2>ClassMMMates</h2>
+</div>
+
+<div class="container">
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <div class="panel panel-default">
+      <% @users.each do |user| %>
       <div class="panel-heading">
         <h3 class="panel-title">
-          All Users
+          <%= user.full_name %>
         </h3>
       </div>
-
-      <ul class="list-group">
-        <% @users.each do |user| %>
-        <li class="list-group-item">
-          <a href="/users/<%= user.id %>">
-            <%= user.email %>
-          </a>
-        </li>
+      <div class="panel-body">
+        <a href="/users/<%=user.id%>"><img img src="<%=user.profile_photo%>" class="img-responsive" width="100"></a>
+        <p><b>Class of <%=user.grad_year.year%></b></p>
+        <% if user.summer_internship.present?%>
+        <p><b>Summer Internship:</b> <%=user.summer_internship%></p>
         <% end %>
-      </ul>
+      </div>
+      <% end %>
     </div>
   </div>
+</div>
 </div>
