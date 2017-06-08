@@ -36,6 +36,24 @@
         <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @degree.user_id %>">
       </div>
 
+      <!-- Label and input for degree -->
+      <div class="form-group">
+        <label for="degree" class="control-label">
+          Degree
+        </label>
+
+        <input type="text" id="degree" name="degree" placeholder="Degree" class="form-control" value="<%= @degree.degree %>">
+      </div>
+
+      <!-- Label and input for grad_year -->
+      <div class="form-group">
+        <label for="grad_year" class="control-label">
+          Grad year
+        </label>
+
+        <input type="text" id="grad_year" name="grad_year" placeholder="Grad year" class="form-control" value="<%= @degree.grad_year %>">
+      </div>
+
       <button class="btn btn-success">
         Create Degree
       </button>

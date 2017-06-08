@@ -9,7 +9,9 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Role</h3>
+  <h3>Add a Function to Your Profile
+  <p><small>Add a function below, and indicate whether this is a function you have experience in, are interested in, or both.</small></p>
+</h3>
 </div>
 
 <div class="row">
@@ -18,26 +20,46 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for function_id -->
+      <!--Label and input for function from dropdown-->
       <div class="form-group">
-        <label for="function_id" class="control-label">
-          Function
-        </label>
+                <label for="function_id" class="control-label">
+                  Function
+                </label>
+                <%= select_tag(:function_id, options_from_collection_for_select(Function.all, :id, :function_name), :class => "form-control") %>
+                <p class="help-block">
+                  <a href="/functions/new">or add a new function</a>
+                </p>
+              </div>
 
-        <input type="text" id="function_id" name="function_id" placeholder="Function" class="form-control" value="<%= @role.function_id %>">
-      </div>
-
-      <!-- Label and input for user_id -->
-      <div class="form-group">
+      <!-- Hidden input for user_id -->
+      <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+      <!-- Not hidden, original label and input for User ID -->
+      <!-- <div class="form-group">
         <label for="user_id" class="control-label">
           User
         </label>
 
         <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @role.user_id %>">
+      </div> -->
+
+      <!-- Label and input for experience -->
+      <div class="checkbox">
+        <label for="experience">
+          <input type="checkbox" id="experience" name="experience" value="1" <%= "checked" if @role.experience %>>
+          Experience
+        </label>
+      </div>
+
+      <!-- Label and input for interest -->
+      <div class="checkbox">
+        <label for="interest">
+          <input type="checkbox" id="interest" name="interest" value="1" <%= "checked" if @role.interest %>>
+          Interest
+        </label>
       </div>
 
       <button class="btn btn-success">
-        Create Role
+        Add Function
       </button>
       or
       <a href="/roles">Cancel</a>

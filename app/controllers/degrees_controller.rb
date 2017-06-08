@@ -22,6 +22,8 @@ class DegreesController < ApplicationController
 
     @degree.school_id = params[:school_id]
     @degree.user_id = params[:user_id]
+    @degree.degree = params[:degree]
+    @degree.grad_year = params[:grad_year]
 
     save_status = @degree.save
 
@@ -43,6 +45,8 @@ class DegreesController < ApplicationController
 
     @degree.school_id = params[:school_id]
     @degree.user_id = params[:user_id]
+    @degree.degree = params[:degree]
+    @degree.grad_year = params[:grad_year]
 
     save_status = @degree.save
 

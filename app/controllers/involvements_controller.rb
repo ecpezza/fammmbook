@@ -22,6 +22,8 @@ class InvolvementsController < ApplicationController
 
     @involvement.industry_id = params[:industry_id]
     @involvement.user_id = params[:user_id]
+    @involvement.experience = params[:experience]
+    @involvement.interest = params[:interest]
 
     save_status = @involvement.save
 
@@ -43,6 +45,8 @@ class InvolvementsController < ApplicationController
 
     @involvement.industry_id = params[:industry_id]
     @involvement.user_id = params[:user_id]
+    @involvement.experience = params[:experience]
+    @involvement.interest = params[:interest]
 
     save_status = @involvement.save
 

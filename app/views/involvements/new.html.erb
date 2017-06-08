@@ -27,6 +27,22 @@
         <input type="text" id="industry_id" name="industry_id" placeholder="Industry" class="form-control" value="<%= @involvement.industry_id %>">
       </div>
 
+      <!-- Label and input for experience -->
+      <div class="checkbox">
+        <label for="experience">
+          <input type="checkbox" id="experience" name="experience" value="1" <%= "checked" if @involvement.experience %>>
+          Experience
+        </label>
+      </div>
+
+      <!-- Label and input for interest -->
+      <div class="checkbox">
+        <label for="interest">
+          <input type="checkbox" id="interest" name="interest" value="1" <%= "checked" if @involvement.interest %>>
+          Interest
+        </label>
+      </div>
+
       <!-- Label and input for user_id -->
       <div class="form-group">
         <label for="user_id" class="control-label">

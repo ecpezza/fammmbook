@@ -36,6 +36,22 @@
         <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @involvement.user_id %>">
       </div>
 
+      <!-- Label and input for experience -->
+      <div class="checkbox">
+        <label for="experience">
+          <input type="checkbox" id="experience" name="experience" value="1" <%= "checked" if @involvement.experience %>>
+          Experience
+        </label>
+      </div>
+
+      <!-- Label and input for interest -->
+      <div class="checkbox">
+        <label for="interest">
+          <input type="checkbox" id="interest" name="interest" value="1" <%= "checked" if @involvement.interest %>>
+          Interest
+        </label>
+      </div>
+
       <button class="btn btn-warning">
         Update Involvement
       </button>

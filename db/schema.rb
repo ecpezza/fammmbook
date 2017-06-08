@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607172238) do
+ActiveRecord::Schema.define(version: 20170608181152) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "author_id"
@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 20170607172238) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "company_name"
-    t.date     "start_date"
-    t.date     "end_date"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -31,29 +29,39 @@ ActiveRecord::Schema.define(version: 20170607172238) do
   create_table "degrees", force: :cascade do |t|
     t.integer  "school_id"
     t.integer  "user_id"
+    t.string   "degree"
+    t.integer  "grad_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "functions", force: :cascade do |t|
     t.string   "function_name"
-    t.boolean  "experience"
-    t.boolean  "interest"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.boolean  "interest"
   end
 
   create_table "industries", force: :cascade do |t|
     t.string   "industry_name"
-    t.boolean  "experience"
-    t.boolean  "interest"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "involvements", force: :cascade do |t|
+    t.integer  "industry_id"
+    t.integer  "user_id"
+    t.boolean  "experience"
+    t.boolean  "interest"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "jobs", force: :cascade do |t|
     t.integer  "company_id"
     t.integer  "user_id"
+    t.date     "start_date"
+    t.date     "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,14 +77,14 @@ ActiveRecord::Schema.define(version: 20170607172238) do
   create_table "roles", force: :cascade do |t|
     t.integer  "function_id"
     t.integer  "user_id"
+    t.boolean  "experience"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "interest"
   end
 
   create_table "schools", force: :cascade do |t|
     t.string   "school_name"
-    t.date     "grad_year"
-    t.string   "degree"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -94,7 +102,6 @@ ActiveRecord::Schema.define(version: 20170607172238) do
     t.string   "last_sign_in_ip"
     t.string   "full_name"
     t.string   "preferred_name"
-    t.date     "grad_year"
     t.string   "hometown"
     t.string   "summer_internship"
     t.text     "kellogg_memory"
@@ -104,6 +111,7 @@ ActiveRecord::Schema.define(version: 20170607172238) do
     t.string   "profile_photo"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "grad_year"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -11,6 +11,8 @@
       <tr>
         <th>Function</th>
         <th>User</th>
+        <th>Experience</th>
+        <th>Interest</th>
         <th>Actions</th>
       </tr>
 
@@ -18,6 +20,8 @@
       <tr>
         <td><%= role.function_id %></td>
         <td><%= role.user_id %></td>
+        <td><%= role.experience %></td>
+        <td><%= role.interest %></td>
         <td>
           <a href="/roles/<%= role.id %>" class="btn btn-primary">Show</a>
           <a href="/roles/<%= role.id %>/edit" class="btn btn-warning">Edit</a>

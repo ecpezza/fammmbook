@@ -11,6 +11,8 @@
       <tr>
         <th>Industry</th>
         <th>User</th>
+        <th>Experience</th>
+        <th>Interest</th>
         <th>Actions</th>
       </tr>
 
@@ -18,6 +20,8 @@
       <tr>
         <td><%= involvement.industry_id %></td>
         <td><%= involvement.user_id %></td>
+        <td><%= involvement.experience %></td>
+        <td><%= involvement.interest %></td>
         <td>
           <a href="/involvements/<%= involvement.id %>" class="btn btn-primary">Show</a>
           <a href="/involvements/<%= involvement.id %>/edit" class="btn btn-warning">Edit</a>

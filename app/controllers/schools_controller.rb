@@ -21,8 +21,6 @@ class SchoolsController < ApplicationController
     @school = School.new
 
     @school.school_name = params[:school_name]
-    @school.grad_year = params[:grad_year]
-    @school.degree = params[:degree]
 
     save_status = @school.save
 
@@ -43,8 +41,6 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
 
     @school.school_name = params[:school_name]
-    @school.grad_year = params[:grad_year]
-    @school.degree = params[:degree]
 
     save_status = @school.save
 

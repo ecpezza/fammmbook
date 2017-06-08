@@ -36,6 +36,23 @@
         <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @role.user_id %>">
       </div>
 
+      <!-- Label and input for experience -->
+      <div class="checkbox">
+        <label for="experience">
+          <input type="checkbox" id="experience" name="experience" value="1" <%= "checked" if @role.experience %>>
+          Experience
+        </label>
+      </div>
+
+      <!-- Label and input for interest -->
+      <div class="form-group">
+        <label for="interest" class="control-label">
+          Interest
+        </label>
+
+        <input type="text" id="interest" name="interest" placeholder="Interest" class="form-control" value="<%= @role.interest %>">
+      </div>
+
       <button class="btn btn-warning">
         Update Role
       </button>

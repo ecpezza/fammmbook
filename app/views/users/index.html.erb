@@ -9,12 +9,12 @@
       <% @users.each do |user| %>
       <div class="panel-heading">
         <h3 class="panel-title">
-          <%= user.full_name %>
+          <a href="/users/<%=user.id%>"><%= user.full_name %></a>
         </h3>
       </div>
       <div class="panel-body">
         <a href="/users/<%=user.id%>"><img img src="<%=user.profile_photo%>" class="img-responsive" width="100"></a>
-        <p><b>Class of <%=user.grad_year.year%></b></p>
+        <p><b>Class of <%=user.grad_year%></b></p>
         <% if user.summer_internship.present?%>
         <p><b>Summer Internship:</b> <%=user.summer_internship%></p>
         <% end %>

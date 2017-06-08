@@ -67,6 +67,74 @@ Rails.application.routes.draw do
   get "/delete_job/:id", :controller => "jobs", :action => "destroy"
   #------------------------------
 
+  # Routes for the School resource:
+  # CREATE
+  get "/schools/new", :controller => "schools", :action => "new"
+  post "/create_school", :controller => "schools", :action => "create"
+
+  # READ
+  get "/schools", :controller => "schools", :action => "index"
+  get "/schools/:id", :controller => "schools", :action => "show"
+
+  # UPDATE
+  get "/schools/:id/edit", :controller => "schools", :action => "edit"
+  post "/update_school/:id", :controller => "schools", :action => "update"
+
+  # DELETE
+  get "/delete_school/:id", :controller => "schools", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Company resource:
+  # CREATE
+  get "/companies/new", :controller => "companies", :action => "new"
+  post "/create_company", :controller => "companies", :action => "create"
+
+  # READ
+  get "/companies", :controller => "companies", :action => "index"
+  get "/companies/:id", :controller => "companies", :action => "show"
+
+  # UPDATE
+  get "/companies/:id/edit", :controller => "companies", :action => "edit"
+  post "/update_company/:id", :controller => "companies", :action => "update"
+
+  # DELETE
+  get "/delete_company/:id", :controller => "companies", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Function resource:
+  # CREATE
+  get "/functions/new", :controller => "functions", :action => "new"
+  post "/create_function", :controller => "functions", :action => "create"
+
+  # READ
+  get "/functions", :controller => "functions", :action => "index"
+  get "/functions/:id", :controller => "functions", :action => "show"
+
+  # UPDATE
+  get "/functions/:id/edit", :controller => "functions", :action => "edit"
+  post "/update_function/:id", :controller => "functions", :action => "update"
+
+  # DELETE
+  get "/delete_function/:id", :controller => "functions", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Industry resource:
+  # CREATE
+  get "/industries/new", :controller => "industries", :action => "new"
+  post "/create_industry", :controller => "industries", :action => "create"
+
+  # READ
+  get "/industries", :controller => "industries", :action => "index"
+  get "/industries/:id", :controller => "industries", :action => "show"
+
+  # UPDATE
+  get "/industries/:id/edit", :controller => "industries", :action => "edit"
+  post "/update_industry/:id", :controller => "industries", :action => "update"
+
+  # DELETE
+  get "/delete_industry/:id", :controller => "industries", :action => "destroy"
+  #------------------------------
+
   # Routes for the Photo resource:
   # CREATE
   get "/photos/new", :controller => "photos", :action => "new"

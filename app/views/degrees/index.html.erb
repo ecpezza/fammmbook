@@ -11,6 +11,8 @@
       <tr>
         <th>School</th>
         <th>User</th>
+        <th>Degree</th>
+        <th>Grad year</th>
         <th>Actions</th>
       </tr>
 
@@ -18,6 +20,8 @@
       <tr>
         <td><%= degree.school_id %></td>
         <td><%= degree.user_id %></td>
+        <td><%= degree.degree %></td>
+        <td><%= degree.grad_year %></td>
         <td>
           <a href="/degrees/<%= degree.id %>" class="btn btn-primary">Show</a>
           <a href="/degrees/<%= degree.id %>/edit" class="btn btn-warning">Edit</a>

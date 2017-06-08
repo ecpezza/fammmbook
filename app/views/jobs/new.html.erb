@@ -36,6 +36,24 @@
         <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @job.user_id %>">
       </div>
 
+      <!-- Label and input for start_date -->
+      <div class="form-group">
+        <label for="start_date" class="control-label">
+          Start date
+        </label>
+
+        <input type="text" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @job.start_date %>">
+      </div>
+
+      <!-- Label and input for end_date -->
+      <div class="form-group">
+        <label for="end_date" class="control-label">
+          End date
+        </label>
+
+        <input type="text" id="end_date" name="end_date" placeholder="End date" class="form-control" value="<%= @job.end_date %>">
+      </div>
+
       <button class="btn btn-success">
         Create Job
       </button>

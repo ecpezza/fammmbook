@@ -16,7 +16,7 @@
 
   <div class="form-group">
     <%= f.label :grad_year %>
-    <%= f.date_field :grad_year, autofocus: true, class: "form-control" %>
+    <%= f.number_field :grad_year, autofocus: true, class: "form-control", placeholder: "YYYY", value: Date.today.strftime("%Y") %>
   </div>
 
   <div class="form-group">

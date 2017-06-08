@@ -22,11 +22,13 @@ class RolesController < ApplicationController
 
     @role.function_id = params[:function_id]
     @role.user_id = params[:user_id]
+    @role.experience = params[:experience]
+    @role.interest = params[:interest]
 
     save_status = @role.save
 
     if save_status == true
-      redirect_to("/roles/#{@role.id}", :notice => "Role created successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "Function added successfully.")
     else
       render("roles/new.html.erb")
     end
@@ -43,11 +45,13 @@ class RolesController < ApplicationController
 
     @role.function_id = params[:function_id]
     @role.user_id = params[:user_id]
+    @role.experience = params[:experience]
+    @role.interest = params[:interest]
 
     save_status = @role.save
 
     if save_status == true
-      redirect_to("/roles/#{@role.id}", :notice => "Role updated successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "Function updated successfully.")
     else
       render("roles/edit.html.erb")
     end

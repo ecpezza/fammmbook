@@ -11,6 +11,8 @@
       <tr>
         <th>Company</th>
         <th>User</th>
+        <th>Start date</th>
+        <th>End date</th>
         <th>Actions</th>
       </tr>
 
@@ -18,6 +20,8 @@
       <tr>
         <td><%= job.company_id %></td>
         <td><%= job.user_id %></td>
+        <td><%= job.start_date %></td>
+        <td><%= job.end_date %></td>
         <td>
           <a href="/jobs/<%= job.id %>" class="btn btn-primary">Show</a>
           <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning">Edit</a>

@@ -17,7 +17,7 @@
            </ul>
 
            <ul>
-             <b>Class of <%=@user.grad_year.year%></b>
+             <b>Class of <%=@user.grad_year%></b>
            </ul>
 
            <ul>
@@ -42,11 +42,74 @@
              <b>In ten years I'd like to be:</b> <%=@user.ten_year_goals%>
            </ul>
 
+           <!--  START IF STATEMENT-->
+           <ul>
+             <b>I have experience in:</b>
+              <%@user.roles.each do |rexperience| %>
+              <% if role.function.function_name.present?%>
+              <td><%=role.function.function_name%></td>
+              <%end%>
+              <%end%>
+           </ul>
+
+           <ul>
+             <b>I'm interested in:</b>
+           </ul>
+           <!--  END IF STATEMENT-->
+
            <% if @user.anything_else.present? %>
            <ul>
              <b>I also want the coMMMMunity to know:</b>
            </ul>
            <% end %>
+      </div>
+    </div>
 
+      <div>
 
-</div>
+          <% if @user.id == current_user.id %>
+             <h4>Add a Function to Your Profile
+             <p><small>Add a function below, and indicate whether this is a function you have experience in, are interested in, or both.</small></p>
+           </h4>
+           <form action="/create_role" method="post">
+             <!-- Hidden input for authenticity token to protect from forgery -->
+             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+             <!--Label and input for function from dropdown-->
+             <div class="form-group">
+                       <label for="function_id" class="control-label">
+                         Function
+                       </label>
+                       <%= select_tag(:function_id, options_from_collection_for_select(Function.all, :id, :function_name), :class => "form-control") %>
+                       <p class="help-block">
+                         <a href="/functions/new">or add a new function</a>
+                       </p>
+                     </div>
+
+             <!-- Hidden input for user_id -->
+             <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+
+             <!-- Label and input for experience -->
+             <div class="checkbox">
+               <label for="experience">
+                 <input type="checkbox" id="experience" name="experience">
+                 Experience
+               </label>
+             </div>
+
+             <!-- Label and input for interest -->
+             <div class="checkbox">
+               <label for="interest">
+                 <input type="checkbox" id="interest" name="interest">
+                 Interest
+               </label>
+             </div>
+
+             <button class="btn btn-success">
+               Add Function
+             </button>
+             or
+             <a href="/roles">Cancel</a>
+           </form>
+               <% end %>
+      </div>

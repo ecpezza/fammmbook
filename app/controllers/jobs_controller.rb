@@ -22,6 +22,8 @@ class JobsController < ApplicationController
 
     @job.company_id = params[:company_id]
     @job.user_id = params[:user_id]
+    @job.start_date = params[:start_date]
+    @job.end_date = params[:end_date]
 
     save_status = @job.save
 
@@ -43,6 +45,8 @@ class JobsController < ApplicationController
 
     @job.company_id = params[:company_id]
     @job.user_id = params[:user_id]
+    @job.start_date = params[:start_date]
+    @job.end_date = params[:end_date]
 
     save_status = @job.save
 
