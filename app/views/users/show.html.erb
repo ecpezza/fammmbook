@@ -31,7 +31,7 @@
            <% end %>
 
            <ul>
-             <b>Favorite Kellogg memory:</b> <%=@user.kellogg_memory%>
+             <b>Favorite Kellogg memory/most looking forward to:</b> <%=@user.kellogg_memory%>
            </ul>
 
            <ul>
@@ -42,6 +42,12 @@
            <ul>
              <b>In ten years I'd like to be:</b> <%=@user.ten_year_goals%>
            </ul>
+
+           <% if @user.anything_else.present? %>
+           <ul>
+             <b>I also want the coMMMMunity to know:</b> <%=@user.anything_else%>
+           </ul>
+           <% end %>
 
            <ul>
              <b>Professional Experience:</b><br>
@@ -70,13 +76,6 @@
              <%end%>
              <%end%>
            </ul>
-
-
-           <% if @user.anything_else.present? %>
-           <ul>
-             <b>I also want the coMMMMunity to know:</b> <%=@user.anything_else%>
-           </ul>
-           <% end %>
 
            <ul>
              <b>Prior Work Experience:</b><br>
