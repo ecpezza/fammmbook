@@ -21,6 +21,5 @@ class User < ApplicationRecord
   validates :full_name, :presence => true
   validates :preferred_name, :presence => true
   validates :hometown, :presence => true
-  validates :grad_year, :presence => true
 
 end

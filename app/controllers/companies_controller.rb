@@ -2,6 +2,9 @@ class CompaniesController < ApplicationController
   def index
     @companies = Company.all
 
+    # @q = Company.ransack(params[:q])
+    # @companyresults = @q.result(distinct: true)
+
     render("companies/index.html.erb")
   end
 

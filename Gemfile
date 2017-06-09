@@ -11,6 +11,7 @@ group :development do
 		  gem "letter_opener"
 		  gem "pry-rails"
 		  gem "starter_generators", :git => 'git://github.com/raghubetina/starter_generators.git'
+			gem 'ransack', github: 'activerecord-hackery/ransack'
 		end
 
 gem "devise"
