@@ -18,4 +18,9 @@ class User < ApplicationRecord
   has_many :companies, :through => :jobs, :source => :company
   has_many :schools, :through => :degrees, :source => :school
 
+  validates :full_name, :presence => true
+  validates :preferred_name, :presence => true
+  validates :hometown, :presence => true
+  validates :grad_year, :presence => true
+
 end

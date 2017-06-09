@@ -5,5 +5,7 @@ class Function < ApplicationRecord
 
   # Indirect Associations
   has_many :users, :through => :roles, :source => :user
-  
+
+  validates :function_name, :presence => true
+
 end

@@ -25,7 +25,7 @@ class CompaniesController < ApplicationController
     save_status = @company.save
 
     if save_status == true
-      redirect_to("/companies/#{@company.id}", :notice => "Company created successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "Company added successfully.")
     else
       render("companies/new.html.erb")
     end
@@ -45,7 +45,7 @@ class CompaniesController < ApplicationController
     save_status = @company.save
 
     if save_status == true
-      redirect_to("/companies/#{@company.id}", :notice => "Company updated successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "Company updated successfully.")
     else
       render("companies/edit.html.erb")
     end

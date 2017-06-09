@@ -9,54 +9,49 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Involvement</h3>
+<h4>Add an Industry to Your Profile
+<p><small>Add an industry below, and indicate whether this is an industry you have experience in, are interested in, or both.</small></p>
+</h4>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <form action="/create_involvement" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+<form action="/create_involvement" method="post">
+<!-- Hidden input for authenticity token to protect from forgery -->
+<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for industry_id -->
-      <div class="form-group">
-        <label for="industry_id" class="control-label">
-          Industry
-        </label>
+<!--Label and input for industry from dropdown-->
+<div class="form-group">
+          <label for="industry_id" class="control-label">
+            Industry
+          </label>
+          <%= select_tag(:industry_id, options_from_collection_for_select(Industry.order("industry_name"), :id, :industry_name), :class => "form-control") %>
+          <p class="help-block">
+            <a href="/functions/new">or add a new industry</a>
+          </p>
+        </div>
 
-        <input type="text" id="industry_id" name="industry_id" placeholder="Industry" class="form-control" value="<%= @involvement.industry_id %>">
-      </div>
+<!-- Hidden input for user_id -->
+<input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
 
-      <!-- Label and input for experience -->
-      <div class="checkbox">
-        <label for="experience">
-          <input type="checkbox" id="experience" name="experience" value="1" <%= "checked" if @involvement.experience %>>
-          Experience
-        </label>
-      </div>
-
-      <!-- Label and input for interest -->
-      <div class="checkbox">
-        <label for="interest">
-          <input type="checkbox" id="interest" name="interest" value="1" <%= "checked" if @involvement.interest %>>
-          Interest
-        </label>
-      </div>
-
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @involvement.user_id %>">
-      </div>
-
-      <button class="btn btn-success">
-        Create Involvement
-      </button>
-      or
-      <a href="/involvements">Cancel</a>
-    </form>
-  </div>
+<!-- Label and input for experience -->
+<div class="checkbox">
+  <label for="experience">
+    <input type="checkbox" id="experience" name="experience">
+    Experience
+  </label>
 </div>
+
+<!-- Label and input for interest -->
+<div class="checkbox">
+  <label for="interest">
+    <input type="checkbox" id="interest" name="interest">
+    Interest
+  </label>
+</div>
+
+<button class="btn btn-success">
+  Add Industry
+</button>
+or
+<a href="/industries">Cancel</a>
+</form>
+<br>

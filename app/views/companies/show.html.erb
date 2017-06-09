@@ -1,12 +1,26 @@
 <div class="page-header">
-  <h3>Company #<%= @company.id %></h3>
+  <h3><%= @company.company_name%></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Company name</dt>
-      <dd><%= @company.company_name %></dd>
+      <dt>People</dt>
+      <dd>
+        <ul class="list-group">
+        <% @company.jobs.each do |job| %>
+          <li class="list-group-item">
+            <a href="/users/<%= job.user_id %>">
+               <img src="<%=job.user.profile_photo%>" class="img-responsive" width = "100">
+               <%= job.user.full_name %>
+               </a>
+               <p>
+               <small><p><b>When:</b> <%=job.start_date.year%>-<%=job.end_date.year%> </p>
+               </small>
+            </li>
+        <% end %>
+        </ul>
+      </dd>
 
     </dl>
 
@@ -14,12 +28,12 @@
       <a href="/companies" class="btn btn-primary">
         Back
       </a>
-      <a href="/companies/<%= @company.id %>/edit" class="btn btn-warning">
+      <!-- <a href="/companies/<%= @company.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_company/<%= @company.id %>" class="btn btn-danger" rel="nofollow">
         Delete
-      </a>
+      </a> -->
     </div>
   </div>
 </div>

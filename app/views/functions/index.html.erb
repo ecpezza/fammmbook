@@ -15,12 +15,12 @@
         <th>See everyone with exeperience or interest</th>
       </tr>
 
-      <% @functions.each do |function| %>
+      <% @functions.order("function_name").each do |function| %>
       <tr>
         <td><%= function.function_name %></td>
       </td>
         <td>
-          <a href="/functions/<%= function.id %>" class="btn btn-primary">Show people</a>
+          <h5># of MMMs into this space: <%=function.roles.count%></h5><a href="/functions/<%= function.id %>" class="btn btn-primary">Show who</a>
           <!-- <a href="/functions/<%= function.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_function/<%= function.id %>" class="btn btn-danger" rel="nofollow">Delete</a> -->
         </td>

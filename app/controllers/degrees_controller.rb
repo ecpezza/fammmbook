@@ -28,7 +28,7 @@ class DegreesController < ApplicationController
     save_status = @degree.save
 
     if save_status == true
-      redirect_to("/degrees/#{@degree.id}", :notice => "Degree created successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "School added successfully.")
     else
       render("degrees/new.html.erb")
     end
@@ -51,7 +51,7 @@ class DegreesController < ApplicationController
     save_status = @degree.save
 
     if save_status == true
-      redirect_to("/degrees/#{@degree.id}", :notice => "Degree updated successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "School updated successfully.")
     else
       render("degrees/edit.html.erb")
     end

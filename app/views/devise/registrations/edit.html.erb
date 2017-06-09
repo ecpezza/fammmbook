@@ -16,7 +16,7 @@
 
   <div class="form-group">
     <%= f.label :grad_year %>
-    <%= f.number_field :grad_year, autofocus: true, class: "form-control", placeholder: "YYYY", value: Date.today.strftime("%Y") %>
+    <%= f.number_field :grad_year, autofocus: true, class: "form-control", placeholder: Date.today.strftime("%Y") %>
   </div>
 
   <div class="form-group">
@@ -35,7 +35,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :kellogg_memory, "What has been your favorite memory so far at Kellogg?" %>
+    <%= f.label :kellogg_memory, "What has been your favorite memory so far at Kellogg? Or, what are you most looking forward to?" %>
     <%= f.text_field :kellogg_memory, autofocus: true, class: "form-control", placeholder: "Let us know about it in a few sentences." %>
   </div>
 

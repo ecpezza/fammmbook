@@ -5,5 +5,7 @@ class School < ApplicationRecord
 
   # Indirect Associations
   has_many :users, :through => :degrees, :source => :user
-  
+
+  validates :school_name, :presence => true, :uniqueness => true
+
 end

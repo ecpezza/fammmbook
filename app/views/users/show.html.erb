@@ -38,36 +38,75 @@
              <b>When I was little, what I wanted to be when I grew up:</b> <%=@user.grow_up%>
            </ul>
 
+
            <ul>
              <b>In ten years I'd like to be:</b> <%=@user.ten_year_goals%>
            </ul>
 
-           <!--  START IF STATEMENT-->
            <ul>
-             <b>I have experience in:</b>
-              <%@user.roles.each do |rexperience| %>
-              <% if role.function.function_name.present?%>
-              <td><%=role.function.function_name%></td>
-              <%end%>
-              <%end%>
+             <b>Professional Experience:</b><br>
+             <% @user.involvements.each do |involvement|%>
+             <%if involvement.industry.industry_name.present? && involvement.experience==true%>
+             <tr><%=involvement.industry.industry_name%> <% if current_user.id == @user.id %>(<a href="/delete_involvement/<%= involvement.id%>">Delete</a>)<%end%><br></tr>
+             <%end%>
+             <%end%>
+             <% @user.roles.each do |role|%>
+             <%if role.function.function_name.present? && role.experience==true%>
+             <tr><%=role.function.function_name%> <% if current_user.id == @user.id %>(<a href="/delete_role/<%= role.id%>">Delete</a>)<%end%><br></tr>
+             <%end%>
+             <%end%>
            </ul>
 
            <ul>
-             <b>I'm interested in:</b>
+             <b>Professional Interests:</b><br>
+             <% @user.involvements.each do |involvement|%>
+             <%if involvement.industry.industry_name.present? && involvement.interest==true%>
+             <tr><%=involvement.industry.industry_name%> <% if current_user.id == @user.id %>(<a href="/delete_involvement/<%= involvement.id%>">Delete</a>)<%end%><br></tr>
+             <%end%>
+             <%end%>
+             <% @user.roles.each do |role|%>
+             <%if role.function.function_name.present? && role.interest==true%>
+             <tr><%=role.function.function_name%> <% if current_user.id == @user.id %>(<a href="/delete_role/<%= role.id%>">Delete</a>)<%end%><br></tr>
+             <%end%>
+             <%end%>
            </ul>
-           <!--  END IF STATEMENT-->
+
 
            <% if @user.anything_else.present? %>
            <ul>
-             <b>I also want the coMMMMunity to know:</b>
+             <b>I also want the coMMMMunity to know:</b> <%=@user.anything_else%>
            </ul>
            <% end %>
+
+           <ul>
+             <b>Prior Work Experience:</b><br>
+             <% @user.jobs.each do |job|%>
+             <%if job.company.company_name.present?%>
+             <tr><%=job.company.company_name%>, <%=job.start_date.year%>-<%=job.end_date.year%> <% if current_user.id == @user.id %>(<a href="/jobs/<%= job.id %>/edit">Edit</a> | <a href="/delete_job/<%= job.id%>">Delete</a>)<%end%></tr><br>
+             <%end%>
+             <%end%>
+           </ul>
+
+           <ul>
+             <b>Education:</b><br>
+             <% @user.degrees.each do |degree|%>
+             <%if degree.school.school_name.present?%>
+             <tr><%=degree.school.school_name%>, <%=degree.grad_year%>, <%=degree.degree%> <% if current_user.id == @user.id %>(<a href="/degrees/<%= degree.id %>/edit">Edit</a> | <a href="/delete_degree/<%= degree.id%>">Delete</a>)<%end%></tr><br>
+             <%end%>
+             <%end%>
+
+           </ul>
+
       </div>
     </div>
 
       <div>
 
           <% if @user.id == current_user.id %>
+
+          <h3>Keep your profile up to date:</h3><br>
+
+            <!--  ADD FUNCTIONAL INTERESTS/EXPERIENCES-->
              <h4>Add a Function to Your Profile
              <p><small>Add a function below, and indicate whether this is a function you have experience in, are interested in, or both.</small></p>
            </h4>
@@ -80,7 +119,7 @@
                        <label for="function_id" class="control-label">
                          Function
                        </label>
-                       <%= select_tag(:function_id, options_from_collection_for_select(Function.all, :id, :function_name), :class => "form-control") %>
+                       <%= select_tag(:function_id, options_from_collection_for_select(Function.order("function_name"), :id, :function_name), :class => "form-control") %>
                        <p class="help-block">
                          <a href="/functions/new">or add a new function</a>
                        </p>
@@ -109,7 +148,149 @@
                Add Function
              </button>
              or
-             <a href="/roles">Cancel</a>
+             <a href="/users/<%=current_user.id %>">Cancel</a>
            </form>
+           <br>
+
+           <!--  ADD INDUSTRY INTERESTS / EXPERIENCES-->
+           <h4>Add an Industry to Your Profile
+           <p><small>Add an industry below, and indicate whether this is an industry you have experience in, are interested in, or both.</small></p>
+         </h4>
+         <form action="/create_involvement" method="post">
+           <!-- Hidden input for authenticity token to protect from forgery -->
+           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+           <!--Label and input for industry from dropdown-->
+           <div class="form-group">
+                     <label for="industry_id" class="control-label">
+                       Industry
+                     </label>
+                     <%= select_tag(:industry_id, options_from_collection_for_select(Industry.order("industry_name"), :id, :industry_name), :class => "form-control") %>
+                     <p class="help-block">
+                       <a href="/functions/new">or add a new industry</a>
+                     </p>
+                   </div>
+
+           <!-- Hidden input for user_id -->
+           <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+
+           <!-- Label and input for experience -->
+           <div class="checkbox">
+             <label for="experience">
+               <input type="checkbox" id="experience" name="experience">
+               Experience
+             </label>
+           </div>
+
+           <!-- Label and input for interest -->
+           <div class="checkbox">
+             <label for="interest">
+               <input type="checkbox" id="interest" name="interest">
+               Interest
+             </label>
+           </div>
+
+           <button class="btn btn-success">
+             Add Industry
+           </button>
+           or
+           <a href="/users/<%=current_user.id %>">Cancel</a>
+         </form>
+         <br>
+
+         <!--  ADD WORK EXPERIENCE -->
+         <h4>Prior Work Experience
+         <p><small>Where did you work prior to MMM? Add companies here.</small></p>
+        </h4>
+        <form action="/create_job" method="post">
+         <!-- Hidden input for authenticity token to protect from forgery -->
+         <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+         <!--Label and input for industry from dropdown-->
+         <div class="form-group">
+                   <label for="company_id" class="control-label">
+                     Company
+                   </label>
+                   <%= select_tag(:company_id, options_from_collection_for_select(Company.order("company_name"), :id, :company_name), :class => "form-control") %>
+                   <p class="help-block">
+                     <a href="/companies/new">or add a new company</a>
+                   </p>
+                 </div>
+
+         <!-- Hidden input for user_id -->
+         <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+
+        <!--  Label and input for start date-->
+         <div class="form-group">
+           <label for="start_date" class="control-label">
+                  Start Date
+          </label>
+           <input type="date" id="start_date" name="start_date" class="form-control">
+         </div>
+
+
+        <!--  Label and input for end date-->
+        <div class="form-group">
+          <label for="end_date" class="control-label">
+                 End Date
+         </label>
+          <input type="date" id="end_date" name="end_date" class="form-control">
+        </div>
+
+         <button class="btn btn-success">
+           Add Company
+         </button>
+         or
+         <a href="/users/<%=current_user.id%>">Cancel</a>
+        </form>
+        <br>
+
+        <!--  ADD EDUCATION EXPERIENCE -->
+        <h4>Education
+        <p><small>Add your schools and degrees here.</small></p>
+       </h4>
+       <form action="/create_degree" method="post">
+        <!-- Hidden input for authenticity token to protect from forgery -->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+        <!--Label and input for industry from dropdown-->
+        <div class="form-group">
+                  <label for="school_id" class="control-label">
+                    School
+                  </label>
+                  <%= select_tag(:school_id, options_from_collection_for_select(School.order("school_name"), :id, :school_name), :class => "form-control") %>
+                  <p class="help-block">
+                    <a href="/schools/new">or add a new school</a>
+                  </p>
+                </div>
+
+        <!-- Hidden input for user_id -->
+        <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+
+       <!--  Label and input for degree-->
+        <div class="form-group">
+          <label for="start_date" class="control-label">
+                 Degree
+         </label>
+          <input type="text" id="degree" name="degree" class="form-control" placeholder="What degree did you earn?">
+        </div>
+
+
+       <!--  Label and input for graduation year-->
+       <div class="form-group">
+         <label for="grad_year" class="control-label">
+                Graduation Year
+        </label>
+         <input type="integer" id="grad_year" name="grad_year" class="form-control" placeholder="YYYY">
+       </div>
+
+        <button class="btn btn-success">
+          Add School
+        </button>
+        or
+        <a href="/users/<%=current_user.id%>">Cancel</a>
+       </form>
+
+
                <% end %>
       </div>

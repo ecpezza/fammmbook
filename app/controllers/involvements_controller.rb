@@ -28,7 +28,7 @@ class InvolvementsController < ApplicationController
     save_status = @involvement.save
 
     if save_status == true
-      redirect_to("/involvements/#{@involvement.id}", :notice => "Involvement created successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "Industry added successfully.")
     else
       render("involvements/new.html.erb")
     end
@@ -51,7 +51,7 @@ class InvolvementsController < ApplicationController
     save_status = @involvement.save
 
     if save_status == true
-      redirect_to("/involvements/#{@involvement.id}", :notice => "Involvement updated successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "Industry updated successfully.")
     else
       render("involvements/edit.html.erb")
     end

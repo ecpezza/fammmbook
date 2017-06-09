@@ -28,7 +28,7 @@ class JobsController < ApplicationController
     save_status = @job.save
 
     if save_status == true
-      redirect_to("/jobs/#{@job.id}", :notice => "Job created successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "Job added successfully.")
     else
       render("jobs/new.html.erb")
     end
@@ -51,7 +51,7 @@ class JobsController < ApplicationController
     save_status = @job.save
 
     if save_status == true
-      redirect_to("/jobs/#{@job.id}", :notice => "Job updated successfully.")
+      redirect_to("/users/#{current_user.id}", :notice => "Job updated successfully.")
     else
       render("jobs/edit.html.erb")
     end

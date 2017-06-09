@@ -5,4 +5,6 @@ class Company < ApplicationRecord
 
   # Indirect Associations
   has_many :users, :through => :jobs, :source => :user
+
+  validates :company_name, :presence => true, :uniqueness => true
 end
